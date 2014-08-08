@@ -39,7 +39,9 @@ serialized as JSON. The return value will be JSON represented as ruby objects.
 In many cases, there shortcuts for various API calls. Where possible, these
 attempt to simplify the task of constructing input.
 ```ruby
-dns.import_domains(domains)
+dns.import_domains(["serialized domain in bind 9 format", "another domain"])
+# will actually become:
+dns.post "domains/import", {}, {"domains" => [{"contentType" => "BIND_9", "contents" => "serialized domain"}]}
 ```
 
 ## Cloud DNS
