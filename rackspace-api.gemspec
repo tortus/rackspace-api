@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Rackspace::VERSION
   spec.authors       = ["William Makley"]
   spec.email         = ["wmakley@tortus.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Library to simplify interacting with the Rackspace JSON API.}
+  spec.description   = %q{Library to simplify interacting with the Rackspace JSON API.}
+  spec.homepage      = "http://www.tortus.com/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
