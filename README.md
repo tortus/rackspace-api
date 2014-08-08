@@ -41,7 +41,10 @@ attempt to simplify the task of constructing input.
 ```ruby
 dns.import_domains(["serialized domain in bind 9 format", "another domain"])
 # will actually become:
-dns.post "domains/import", {}, {"domains" => [{"contentType" => "BIND_9", "contents" => "serialized domain"}]}
+dns.post "domains/import", {}, {"domains" => [
+  {"contentType" => "BIND_9", "contents" => "serialized domain in bind 9 format"},
+  {"contentType" => "BIND_9", "contents" => "another domain"}
+]}
 ```
 
 ## Cloud DNS
