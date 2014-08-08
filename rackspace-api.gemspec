@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["William Makley"]
   spec.email         = ["wmakley@tortus.com"]
   spec.summary       = %q{Library to simplify interacting with the Rackspace JSON API.}
-  spec.description   = %q{Library to simplify interacting with the Rackspace JSON API.}
+  spec.description   = %q{Simple front-end for JSON api.}
   spec.homepage      = "http://www.tortus.com/"
   spec.license       = "MIT"
 
@@ -18,8 +18,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "json"
+  spec.add_dependency "json", "~> 1.7"
 
   spec.add_development_dependency "bundler", "~> 1.6"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rake", "~> 10.3"
 end
