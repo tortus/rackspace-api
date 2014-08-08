@@ -36,7 +36,7 @@ dns.post "action", {:param => :value}, {"request body" => "json goes here"}
 The request body can be a string, or an object that will automatically be
 serialized as JSON. The return value will be JSON represented as ruby objects.
 
-In many cases, there shortcuts for various API calls. Where possible, these
+In many cases, there are shortcuts for various API calls. Where possible, these
 attempt to simplify the task of constructing input.
 ```ruby
 dns.import_domains(["serialized domain in bind 9 format", "another domain"])
