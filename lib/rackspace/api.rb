@@ -1,4 +1,7 @@
 # encoding: UTF-8
+require 'net/https'
+require 'json'
+
 module Rackspace
   # Provides methods for generating HTTP requests to all API's,
   # wrapping the fairly awful Net::HTTP stuff. Only JSON is supported.
