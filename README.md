@@ -1,6 +1,7 @@
-# Rackspace::Api
+# Rackspace
 
-TODO: Write a gem description
+Ruby classes to make interacting with the Rackspace JSON API
+simpler. Currently only functions synchronously.
 
 ## Installation
 
@@ -16,14 +17,11 @@ Or install it yourself as:
 
     $ gem install rackspace-api
 
-## Usage
+## Cloud DNS usage
 
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/rackspace-api/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+```ruby
+session = Rackspace.authenticate(username, api_key)
+dns = Rackspace::CloudDNS.new(session)
+dns.list_domains(:limit => 20, :offset => 10)
+# returns parsed json (as ruby objects)
+```
