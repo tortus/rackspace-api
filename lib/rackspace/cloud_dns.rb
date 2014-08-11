@@ -36,6 +36,11 @@ module Rackspace
         {"contentType" => "BIND_9", "contents" => domain}
       }
     end
+
+    # takes array of records
+    def create_records(domain_id, records)
+      post "domains/#{domain_id}/record", {}, {"records" => records}
+    end
   end
 
 end
