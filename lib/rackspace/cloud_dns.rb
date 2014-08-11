@@ -3,6 +3,7 @@ module Rackspace
   # Cloud DNS API operations:
   # http://docs.rackspace.com/cdns/api/v1.0/cdns-devguide/content/API_Operations_Wadl-d1e2648.html
   class CloudDNS < API
+    MAX_ENTITIES = 100
 
     def initialize(session, options = {})
       endpoint = session.service_catalog.endpoints('cloudDNS').fetch(0).fetch('publicURL')
@@ -22,8 +23,11 @@ module Rackspace
 
     # to correctly structure domain data, see:
     # http://docs.rackspace.com/cdns/api/v1.0/cdns-devguide/content/POST_createDomain_v1.0__account__domains_domains.html
-    def create_domains(domains)
-      post "domains", {}, "domains" => domains
+    def create_domains(domains, subdomains = [])
+      if domains.length > 100
+        raise "Limit is 100 entities per request (including records)"
+      end
+      post "domains", {}, "domains" => domains, "subdomains" => subdomains
     end
 
     # takes array of domain strings in bind 9 format
