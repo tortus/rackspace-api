@@ -62,7 +62,7 @@ module Rackspace
       puts "Request:\n  #{req.inspect} #{uri}:#{uri.port}\n  #{req.body}" if verbose
 
       puts "Response:" if verbose
-      response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.port == 443) {|http|
+      response = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.port == 443) {|http|
         http.request(req)
       }
       if response.is_a?(Net::HTTPSuccess)
