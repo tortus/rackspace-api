@@ -13,7 +13,7 @@ module Rackspace
       def initialize(response)
         @response = response
         @json = JSON.parse(response.body)
-        @message = @json.fetch("error-message")
+        @message = @json.fetch("error-message") { response.body }
         super(@message)
       end
 
