@@ -7,21 +7,38 @@ module Rackspace
   # wrapping the fairly awful Net::HTTP stuff. Only JSON is supported.
   class API
 
+    # Logging the error message and exiting:
+    #
+    #     begin
+    #       # some api call
+    #     rescue Rackspace::API:Error => ex
+    #       puts ex
+    #       exit 1
+    #     end
+    #
+    # Accessing error response JSON directly:
+    #
+    #     begin
+    #       # some api call
+    #     rescue Rackspace::API:Error => ex
+    #       puts ex.json
+    #     end
     class Error < StandardError
-      attr_reader :response, :json
+      attr_reader :response
 
       def initialize(response)
         @response = response
-        @json = JSON.parse(response.body)
-        @message = @json.fetch("error-message") { response.body }
-        super(@message)
+        super(response.body)
       end
 
       def to_s
-        "<Rackspace::API::Error #{@response.code} - #{@response.message}: \"#{@message}\">"
+        "<Rackspace::API::Error #{@response.code} - #{@response.message}: \"#{@response.body}\">"
       end
-
       alias_method :inspect, :to_s
+
+      def json
+        @json ||= JSON.parse(@response.body)
+      end
     end
 
 
