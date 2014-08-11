@@ -55,22 +55,21 @@ If any API call returns a non-success response code, an instance of
 Rackspace::API::Error will be raised.
 
 ```ruby
-# logging the error message and exiting:
 begin
   # some api call
 rescue Rackspace::API::Error => ex
+  # logging the error message:
   puts ex
+  # >> <Rackspace::API::Error 400 - Bad Request: "{"message":"Validation failed.","code":400,"details":"_autodiscover _tcp is not a valid SRV record name."}">
+
+  # Accessing parsed response JSON:
+  ex.json
+  # >> {"message":"Validation failed.","code":400,"details":"_autodiscover _tcp is not a valid SRV record name."}
+
+  # Accessing the Net::HTTPResponse object:
+  ex.response
+
   exit 1
-end
-
-# Accessing parsed response JSON directly:
-rescue Rackspace::API::Error => ex
-  puts ex.json
-end
-
-# Accessing the HTTPResponse object:
-rescue Rackspace::API::Error => ex
-  puts ex.response
 end
 ```
 
