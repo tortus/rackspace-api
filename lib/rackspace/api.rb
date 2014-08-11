@@ -7,6 +7,22 @@ module Rackspace
   # wrapping the fairly awful Net::HTTP stuff. Only JSON is supported.
   class API
 
+    class Error < StandardError
+      attr_reader :response, :body, :json
+
+      def initialize(response)
+        @response = response
+        @body = response.body
+        @json = JSON.parse(response.body)
+        super(@json["error-message"])
+      end
+
+      def to_s
+        "<Rackspace::API::Error #{response.code} #{response.message}: #{message}>"
+      end
+    end
+
+
     attr_accessor :endpoint, :auth_token, :verbose
 
     def initialize(endpoint, auth_token, options = {})
@@ -52,9 +68,7 @@ module Rackspace
         pp json if verbose
         json
       else
-        puts response.inspect
-        puts response.body
-        raise StandardError, "API request failed"
+        raise Error.new(response)
       end
     end
   end
