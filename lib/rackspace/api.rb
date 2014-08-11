@@ -13,12 +13,15 @@ module Rackspace
       def initialize(response)
         @response = response
         @json = JSON.parse(response.body)
-        super(@json.fetch("error-message"))
+        @message = @json.fetch("error-message")
+        super(@message)
       end
 
       def to_s
-        "<Rackspace::API::Error #{@response.code} - #{@response.message}: \"#{message}\">"
+        "<Rackspace::API::Error #{@response.code} - #{@response.message}: \"#{@message}\">"
       end
+
+      alias_method :inspect, :to_s
     end
 
 
