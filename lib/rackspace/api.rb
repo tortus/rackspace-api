@@ -17,7 +17,7 @@ module Rackspace
       end
 
       def to_s
-        "<Rackspace::API::Error #{@response.code} #{@response.message}: #{@message}>"
+        "<Rackspace::API::Error #{@response.code} - #{@response.message}: \"#{message}\">"
       end
     end
 
