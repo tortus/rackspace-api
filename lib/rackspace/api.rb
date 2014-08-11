@@ -11,7 +11,7 @@ module Rackspace
     #
     #     begin
     #       # some api call
-    #     rescue Rackspace::API:Error => ex
+    #     rescue Rackspace::API::Error => ex
     #       puts ex
     #       exit 1
     #     end
@@ -20,7 +20,7 @@ module Rackspace
     #
     #     begin
     #       # some api call
-    #     rescue Rackspace::API:Error => ex
+    #     rescue Rackspace::API::Error => ex
     #       puts ex.json
     #     end
     class Error < StandardError

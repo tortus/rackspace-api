@@ -58,18 +58,18 @@ Rackspace::API::Error will be raised.
 # logging the error message and exiting:
 begin
   # some api call
-rescue Rackspace::API:Error => ex
+rescue Rackspace::API::Error => ex
   puts ex
   exit 1
 end
 
 # Accessing error response JSON directly:
-rescue Rackspace::API:Error => ex
+rescue Rackspace::API::Error => ex
   puts ex.json
 end
 
 # Accessing the HTTPResponse object:
-rescue Rackspace::API:Error => ex
+rescue Rackspace::API::Error => ex
   puts ex.response
 end
 ```
