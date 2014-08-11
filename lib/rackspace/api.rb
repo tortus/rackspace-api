@@ -8,17 +8,16 @@ module Rackspace
   class API
 
     class Error < StandardError
-      attr_reader :response, :body, :json
+      attr_reader :response, :json
 
       def initialize(response)
         @response = response
-        @body = response.body
         @json = JSON.parse(response.body)
-        super(@json["error-message"])
+        super(@json.fetch("error-message"))
       end
 
       def to_s
-        "<Rackspace::API::Error #{response.code} #{response.message}: #{message}>"
+        "<Rackspace::API::Error #{@response.code} #{@response.message}: #{@message}>"
       end
     end
 
