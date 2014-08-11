@@ -16,7 +16,7 @@ module Rackspace
     #       exit 1
     #     end
     #
-    # Accessing error response JSON directly:
+    # Accessing parsed response JSON directly:
     #
     #     begin
     #       # some api call
