@@ -7,6 +7,10 @@ module Rackspace
       data.fetch('access').fetch('token').fetch('id')
     end
 
+    def tenant_id
+      data.fetch('access').fetch('token').fetch('tenant').fetch('id')
+    end
+
     def service_catalog
       ServiceCatalog.new(data.fetch('access').fetch('serviceCatalog'))
     end
