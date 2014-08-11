@@ -63,7 +63,7 @@ rescue Rackspace::API::Error => ex
   exit 1
 end
 
-# Accessing error response JSON directly:
+# Accessing parsed response JSON directly:
 rescue Rackspace::API::Error => ex
   puts ex.json
 end
