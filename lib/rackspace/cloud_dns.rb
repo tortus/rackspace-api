@@ -10,6 +10,10 @@ module Rackspace
       super(endpoint, session.auth_token, options)
     end
 
+    def status(key, params = {})
+      get "status/#{key}", params
+    end
+
     def list_domains(options = {})
       limit = options.delete(:limit) { 10 }
       offset = options.delete(:offset) { 0 }
