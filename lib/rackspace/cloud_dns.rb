@@ -49,6 +49,10 @@ module Rackspace
     def get_records(domain_id)
       get "domains/#{domain_id}/records"
     end
+
+    def delete_records(domain_id, record_ids)
+      delete "domains/#{domain_id}/records?#{Array(record_ids).join(',')}"
+    end
   end
 
 end
