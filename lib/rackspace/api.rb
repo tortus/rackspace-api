@@ -58,6 +58,10 @@ module Rackspace
       request(Net::HTTP::Post, *args)
     end
 
+    def delete(*args)
+      request(Net::HTTP::Delete, *args)
+    end
+
     private
 
     def request(request_klass, path, params = {}, body = nil)
