@@ -45,6 +45,10 @@ module Rackspace
     def create_records(domain_id, records)
       post "domains/#{domain_id}/record", {}, {"records" => records}
     end
+
+    def get_records(domain_id)
+      get "domains/#{domain_id}/records"
+    end
   end
 
 end
